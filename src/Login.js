@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import "./Login.css";
 import ForgotPassword from "./ForgotPassword";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate(); // 使用 useHistory Hook
+
   const handleSubmit = (event) => {
     event.preventDefault();
     // 添加登入邏輯
+  };
+
+  const handleGoToSignup = () => {
+    navigate("/signup"); // 導向到註冊頁面
   };
 
   return (
@@ -70,7 +78,10 @@ function Login() {
         {/* Register link */}
         <div className="text-center">
           <p>
-            還不是會員？ <a href="#!">註冊</a>
+            還不是會員？{" "}
+            <button type="button" onClick={handleGoToSignup}>
+              註冊
+            </button>
           </p>
         </div>
       </form>
